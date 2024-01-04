@@ -28,12 +28,18 @@
                             </div>
                         @enderror
                         <label for="password" class="mt-3"><strong>Password:</strong></label>
-                        <input type="password" name="password" value="{{ old('password') }}" placeholder="Password..." class="form-control @error('password') is-invalid @enderror">
+                        <input type="password" id="change_password" name="password" value="{{ old('password') }}" placeholder="Password..." class="form-control @error('password') is-invalid @enderror">
                         @error('password')
                         <div class="invalid-feedback">
                             Password tidak boleh kosong!
                         </div>
                         @enderror
+                        <div class="container">
+                            <div class="row">
+                                <input type="checkbox" value="" onclick="click_change()" id="asd">
+                                <label for="asd"><small id="hidden_password" class="form-text text-muted mt-2"> &nbsp;Lihat password</small></label>
+                            </div>
+                        </div>
                         <div class="login__form-action mt-3">
                             <!-- <button type="submit" class="btn btn--blue col-md-12 mb-2 mb-sm-0">Login</button> -->
                             <input type="submit" name="submit" class="btn btn--blue col-md-12 mb-2 mb-sm-0" value="Login">
@@ -70,6 +76,18 @@
             <a href="{{ route('login.create') }}" class="btn btn--link mb-3">Buat Akun</a>
         </div><!-- login -->
     </div>
-
+    <script type="text/javascript">
+        var tulisan_hidden = document.getElementById("hidden_password");
+        var password = document.getElementById("change_password");
+        function click_change() {
+            if (password.type == "password") {
+                tulisan_hidden.innerHTML = "&nbsp;Sembunyikan password";
+                password.type = "text";
+            }else{
+                tulisan_hidden.innerHTML = "&nbsp;Lihat password";
+                password.type = "password";
+            }
+        }
+    </script>
 </body>
 </html>

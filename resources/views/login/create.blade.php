@@ -97,7 +97,7 @@
                     @endif
                 </div>
             </div>
-            <a href="" class="btn btn--link mb-3">Sudah punya akun? Login!</a>
+            <a href="{{ route('login') }}" class="btn btn--link mb-3">Sudah punya akun? Login!</a>
         </div>
     </div>
     <script type="text/javascript">
