@@ -21,6 +21,7 @@ Route::get('/', [HomeController::class, "index"])->name("home");
 Route::get("login", [LoginController::class, "index"])->name("login");
 Route::get("login/create/", [LoginController::class, "create_account"])->name("login.create");
 Route::post("login", [LoginController::class, "action_login"])->name("action_login");
+Route::post("login/create", [LoginController::class, "create_user"])->name("login.create");
 
 // admin dashboard
 Route::middleware(["auth","CekStatus:admin"])->group(function(){

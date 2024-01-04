@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string("role");
             $table->string("nisn")->nullable();
             $table->string('password');
+            $table->string("accept");
             $table->rememberToken();
             $table->timestamps();
         });

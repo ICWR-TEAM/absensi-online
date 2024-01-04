@@ -12,7 +12,7 @@ class AdminController extends Controller
         return view('login/home');
     }
 
-    public function logout(Request $req): RedirectResponse
+    public function logout(Request $req)
     {
         Auth::logout();
         $req->session()->invalidate();

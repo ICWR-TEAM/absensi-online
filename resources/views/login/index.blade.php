@@ -51,6 +51,19 @@
                                 </div>
                             </div>
                         @endif
+                        @if(session('not_acc'))
+                            <div class="alert alert--danger mt-3">
+                                <div class="alert__icon">
+                                    <span class="fa fa-ban"></span>
+                                </div>
+                                <div class="alert__description">
+                                    <p>Akun belum aktif, silahkan hubungi operator!</p>
+                                </div>
+                                <div class="alert__action">
+                                    <a class="alert__close-btn">&times;</a>
+                                </div>
+                            </div>
+                        @endif
                     </form>
                 </div>
             </div>

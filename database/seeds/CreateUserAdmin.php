@@ -15,7 +15,8 @@ class CreateUserAdmin extends Seeder
             "name"=>"icwr",
             "email"=>"icwr@icwr.com",
             "password"=>Hash::make("icwr"),
-            "role"=>"admin"
+            "role"=>"admin",
+            "accept"=>"yes"
         ]);
     }
 }
