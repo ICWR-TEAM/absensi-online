@@ -27,6 +27,8 @@ Route::post("login/create", [LoginController::class, "create_user"])->name("logi
 Route::middleware(["auth","CekStatus:admin"])->group(function(){
     Route::get("admin", [AdminController::class,"index"])->name("admin");
     Route::get("/admin/logout", [AdminController::class, "logout"])->name("admin.logout");
+    Route::get("action/user", [AdminController::class, "action_user"])->name("action.user");
+    Route::get("data/user", [AdminController::class, "json_user"])->name("data.user");
 });
 
 // siswa dashboard

@@ -11,7 +11,7 @@
             </a>
             <ul class="sidebar__dropdown">
                 <li class="sidebar__dropdown-item"><a href="#">Tambah</a></li>
-                <li class="sidebar__dropdown-item"><a href="#">Aksi user</a></li>
+                <li class="sidebar__dropdown-item"><a href="{{ route('action.user') }}">Aksi user</a></li>
         </ul>
         </li>
         <li class="sidebar__item">

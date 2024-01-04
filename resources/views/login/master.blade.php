@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="{{ asset('dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('dist/css/reza-admin.min.css') }}">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" />
+
     <link rel="icon" href="{{ asset('dist/img/Reza_Admin.ico') }}">
 </head>
 <body>
@@ -35,5 +38,13 @@
     <script src="{{ asset('/dist/js/jquery-3.5.1.slim.min.js') }}"></script>
     <script src="{{ asset('/dist/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('/dist/js/reza-admin.min.js') }}"></script>
+    <!-- <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#users-table").DataTable();
+        });
+    </script>
 </body>
 </html>
