@@ -59,18 +59,34 @@ class AdminController extends Controller
     public function import_excel_user(Request $req)
     {
         $req->validate([
-            "file"=>"mimes:csv,xls,xlsx"
+            "file"=>[
+                "required",
+                function ($attribute, $value, $fail) {
+                    $allowedTypes = ['csv', 'xls', 'xlsx'];
+                    $extension = strtolower($value->getClientOriginalExtension());
+
+                    if (!in_array($extension, $allowedTypes)) {
+                        $fail("The $attribute must be a file of type: " . implode(', ', $allowedTypes) . ".");
+                    }
+                }
+            ]
         ]);
         $file = $req->file("file");
         $nama_file = rand().$file->getClientOriginalName();
         $file->move("file",$nama_file);
-        if(Excel::import(new UserImport, public_path('file/'.$nama_file))){
+        try {
+            if(Excel::import(new UserImport, public_path('file/'.$nama_file))){
+                File::delete(public_path("file/".$nama_file));
+                Session::flash("berhasil_import", "berhasil");
+                return redirect("tambah/user");
+            }else {
+                File::delete(public_path("file/".$nama_file));
+                Session::flash("gagal_import", "gagal");
+                return redirect("tambah/user");
+            }
+        } catch(\Exception $e) {
             File::delete(public_path("file/".$nama_file));
-            Session::flash("berhasil_import", "berhasil");
-            return redirect("tambah/user");
-        }else {
-            File::delete(public_path("file/".$nama_file));
-            Session::flash("gagal_import", "gagal");
+            Session::flash("gagal_import_duplicate", "Data duplicate, silahkan cek file ulang!");
             return redirect("tambah/user");
         }
 
