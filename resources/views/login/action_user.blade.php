@@ -68,6 +68,32 @@
         </div>
     </div>
     @endif
+
+    @if(session("berhasil_delete"))
+    <div class="alert alert--success">
+        <div class="alert__icon">
+            <span class="fa fa-check-circle"></span>
+        </div>
+        <div class="alert__description">
+            <p>Berhasil hapus user!</p>
+        </div>
+        <div class="alert__action">
+            <a class="alert__close-btn">&times;</a>
+        </div>
+    </div>
+    @elseif(session("gagal_delete"))
+    <div class="alert alert--danger">
+        <div class="alert__icon">
+            <span class="fa fa-ban"></span>
+        </div>
+        <div class="alert__description">
+            <p>Gagal delete user, silahkan hubungi administrator!</p>
+        </div>
+        <div class="alert__action">
+            <a class="alert__close-btn">&times;</a>
+        </div>
+    </div>
+    @endif
 </main>
 @push("script")
 
