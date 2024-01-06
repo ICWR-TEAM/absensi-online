@@ -6,9 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\ViewUser;
-// use App\User;
 use Session;
-// use DataTables;
 use Yajra\DataTables\Facades\DataTables;
 
 
@@ -26,18 +24,21 @@ class AdminController extends Controller
         return view("login/action_user", ["data"=>$data]);
     }
 
-    public function json_user()
+    public function accept_user($id)
     {
-        // return DataTables::of(DB::table('users')->get())->make(true);
-        // return json_encode(\App\User::all());
-        // $data = \App\User::all();
-        // return $data->toJson();
-        // dd($data);
-        // $data = ViewUser::latest()->get();
-        // dd($data);
-        // return DataTables::of($data)->addIndexColumn()->make(true);
+        $db = DB::table("users")->where("id", $id)->update(["accept"=>"yes"]);
+        if ($db) {
+            Session::flash("berhasil","berhasil");
+            return redirect("action/user/");
+        }else {
+            Session::flash("gagal", "gagal");
+            return redirect("action/user/");
+        }
+    }
 
-        // return ViewUser::get()->toJson();
+    public function tambah_user()
+    {
+        return view("login/tambah_user");
     }
 
     public function logout(Request $req)

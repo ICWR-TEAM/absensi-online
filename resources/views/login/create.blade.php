@@ -39,7 +39,7 @@
                             <input type="password" name="password" value="" placeholder="Password ..." id="change_password"class="form-control @error('password') is-invalid @enderror" required>
                             @error('password')
                                 <div class="invalid-feedback">
-                                    Password harus mengandung karakter angka, huruf minimal 8 karakter dan harus sama dengan "ulangi password"!
+                                    Password harus mengandung karakter angka, huruf minimal 8 karakter, minimal 1 huruf kapital, minimal 1 simbol(@$!'%*#?&) dan harus sama dengan "ulangi password"!
                                 </div>
                             @enderror
                             <div class="row container">

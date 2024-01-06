@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', [HomeController::class, "index"])->name("home");
 Route::get("login", [LoginController::class, "index"])->name("login");
@@ -29,7 +30,13 @@ Route::middleware(["auth","CekStatus:admin"])->group(function(){
     Route::get("/admin/logout", [AdminController::class, "logout"])->name("admin.logout");
     Route::get("action/user", [AdminController::class, "action_user"])->name("action.user");
     Route::get("data/user", [AdminController::class, "json_user"])->name("data.user");
-    Route::get("admin/accept/{id}", [AdminController::class, "accept_user"])->name("admin.accept.id");
+    Route::get("admin/user/accept/{id}", [AdminController::class, "accept_user"])->name("admin.accept.id");
+    Route::get("admin/user/delete/{id}", [AdminController::class, "delete_user"])->name("admin.user.delete");
+    Route::get("tambah/user", [AdminController::class, "tambah_user"])->name("tambah.user");
 });
 
-// siswa dashboard
+// user dashboard
+Route::middleware(["auth", "CekStatus:user"])->group(function(){
+    Route::get("user", [UserController::class, "index"])->name("user");
+    Route::get("user/logout", [UserController::class, "logout"])->name("user.logout");
+});

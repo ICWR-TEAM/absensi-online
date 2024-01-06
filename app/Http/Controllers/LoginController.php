@@ -25,6 +25,13 @@ class LoginController extends Controller
     }
     public function create_account()
     {
+        if (Auth::check()) {
+            if (Auth::user()->role === "admin") {
+                return redirect()->intended("admin");
+            }elseif (Auth::user()->role === "user") {
+                return redirect()->intended("user");
+            }
+        }
         return view("login/create");
     }
 
@@ -65,7 +72,7 @@ class LoginController extends Controller
                 "regex:/[a-z]/",
                 "regex:/[A-Z]/",
                 "regex:/[0-9]/",
-                "regex:/[@$!%*#?&]/"
+                "regex:/[@$!'%*#?&]/"
             ],
             "password_repeat"=>"required|min:8"
         ]);

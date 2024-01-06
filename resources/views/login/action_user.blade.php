@@ -29,9 +29,10 @@
             </tr>
           </thead>
           <tbody>
+              <?php $no=1; ?>
               @foreach($data as $d)
               <tr>
-                  <td>1</td>
+                  <td><?php echo $no++; ?></td>
                   <td>{{ $d->name }}</td>
                   <td>{{$d->email}}</td>
                   <td>{{$d->role}}</td>
@@ -42,7 +43,31 @@
           </tbody>
         </table>
     </pre>
-
+    @if(session("berhasil"))
+    <div class="alert alert--success">
+        <div class="alert__icon">
+            <span class="fa fa-check-circle"></span>
+        </div>
+        <div class="alert__description">
+            <p>Berhasil terima user!</p>
+        </div>
+        <div class="alert__action">
+            <a class="alert__close-btn">&times;</a>
+        </div>
+    </div>
+    @elseif(session("gagal"))
+    <div class="alert alert--danger">
+        <div class="alert__icon">
+            <span class="fa fa-ban"></span>
+        </div>
+        <div class="alert__description">
+            <p>Gagal terima user, silahkan hubungi administrator!</p>
+        </div>
+        <div class="alert__action">
+            <a class="alert__close-btn">&times;</a>
+        </div>
+    </div>
+    @endif
 </main>
 @push("script")
 
