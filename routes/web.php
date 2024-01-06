@@ -29,6 +29,7 @@ Route::middleware(["auth","CekStatus:admin"])->group(function(){
     Route::get("/admin/logout", [AdminController::class, "logout"])->name("admin.logout");
     Route::get("action/user", [AdminController::class, "action_user"])->name("action.user");
     Route::get("data/user", [AdminController::class, "json_user"])->name("data.user");
+    Route::get("admin/accept/{id}", [AdminController::class, "accept_user"])->name("admin.accept.id");
 });
 
 // siswa dashboard

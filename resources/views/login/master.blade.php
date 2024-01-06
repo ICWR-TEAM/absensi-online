@@ -39,12 +39,6 @@
     <script src="{{ asset('/dist/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('/dist/js/reza-admin.min.js') }}"></script>
     <!-- <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> -->
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $("#users-table").DataTable();
-        });
-    </script>
+    @stack("script")
 </body>
 </html>
