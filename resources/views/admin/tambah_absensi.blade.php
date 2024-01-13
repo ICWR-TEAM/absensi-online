@@ -42,7 +42,7 @@
                 <small class="form-text form-text--red">Opsi harus ada yang dipilih!</small>
                 @enderror
 
-                <input type="hidden" name="waktu_buka" value="" class="form-control" id="waktu_buka">
+                <input type="hidden" name="waktu_buka" value="{{ $value->buka_otomatis == 'iya' ? $value->waktu_buka : '' }}" class="form-control" id="waktu_buka">
 
                 @error("waktu_buka")
                 <small class="form-text form-text--red">Waktu harus terisi, silahkan pilih "iya" kembali!</small>
@@ -60,7 +60,7 @@
                 <small class="form-text form-text--red">Opsi harus ada yang dipilih!</small>
                 @enderror
 
-                <input type="hidden" name="waktu_tutup" value="" class="form-control" id="waktu_tutup">
+                <input type="hidden" name="waktu_tutup" value="{{ $value->tutup_otomatis == 'iya' ? $value->waktu_tutup : '' }}" class="form-control" id="waktu_tutup">
 
                 @error("waktu_tutup")
                 <small class="form-text form-text--red">Waktu harus terisi, silahkan pilih "iya" kembali!</small>
