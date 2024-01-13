@@ -130,6 +130,45 @@ class AdminController extends Controller
         }
     }
 
+
+
+//PRESENSI ACTION
+    public function tambah_absensi()
+    {
+        $value_settingAbsensi = DB::table("setting_absensi")->where("id",1)->first();
+        return view("admin/tambah_absensi")->with("value", $value_settingAbsensi);
+    }
+
+    public function aksi_presensi(Request $req)
+    {
+        $req->validate([
+            "buka_atau_tutup"=>"required|in:buka,tutup",
+            "buka_otomatis"=>"required|in:iya,tidak",
+            "tutup_otomatis"=>"required|in:iya,tidak",
+            "waktu_buka"=>$req->buka_otomatis == "iya" ? "required_if:buka_otomatis,iya" : "",
+            "waktu_tutup"=>$req->tutup_otomatis == "iya" ? "required_if:tutup_otomatis,iya" : ""
+        ]);
+
+        $update = DB::table("setting_absensi")->where("id", 1)->update([
+            "buka_atau_tutup"=>$req->buka_atau_tutup,
+            "tutup_otomatis"=>$req->tutup_otomatis,
+            "buka_otomatis"=>$req->buka_otomatis,
+            "waktu_buka"=>$req->waktu_buka,
+            "waktu_tutup"=>$req->waktu_tutup,
+            "deskripsi"=>$req->deskripsi,
+            "created_at"=>now(),
+            "updated_at"=>now()
+        ]);
+        if ($update) {
+            Session::flash("berhasil_update");
+            return redirect("tambah/absensi");
+        }else{
+            Session::flash("gagal_update");
+            return redirect("tambah/absensi");
+        }
+
+    }
+
     public function logout(Request $req)
     {
         Auth::logout();

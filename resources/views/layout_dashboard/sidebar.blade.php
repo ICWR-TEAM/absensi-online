@@ -12,7 +12,16 @@
             <ul class="sidebar__dropdown">
                 <li class="sidebar__dropdown-item"><a href="{{route('tambah.user')}}">Tambah</a></li>
                 <li class="sidebar__dropdown-item"><a href="{{ route('action.user') }}">Aksi user</a></li>
-        </ul>
+            </ul>
+        </li>
+        <li class="sidebar__item">
+            <a class="sidebar__btn-dropdown" href="#">
+                <span class="fa fa-list"></span> Setting presensi
+            </a>
+            <ul class="sidebar__dropdown">
+                <li class="sidebar__dropdown-item"><a href="{{ route('tambah.absensi') }}">Buat presensi</a></li>
+                <li class="sidebar__dropdown-item"><a href="{{ route('action.user') }}">Aksi presensi</a></li>
+            </ul>
         </li>
         <li class="sidebar__item">
             <a href="#"><span class="fa fa-area-chart"></span> Kemajuan</a>

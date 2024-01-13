@@ -35,6 +35,10 @@ Route::middleware(["auth","CekStatus:admin"])->group(function(){
     Route::get("tambah/user", [AdminController::class, "tambah_user"])->name("tambah.user");
     Route::post("import/excel/user", [AdminController::class, "import_excel_user"])->name("import.excel.user");
     Route::post("tambah/user", [AdminController::class, "tambah_user_manual"])->name("tambah.user");
+
+    //absensi
+    Route::get("tambah/absensi", [AdminController::class, "tambah_absensi"])->name("tambah.absensi");
+    Route::post("tambah/absensi", [AdminController::class, "aksi_presensi"])->name("tamba.absensi");
 });
 
 // user dashboard
