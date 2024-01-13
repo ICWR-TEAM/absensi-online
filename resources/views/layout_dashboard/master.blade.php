@@ -24,7 +24,7 @@
     </nav>
 
     <!-- Sidebar -->
-    @include('login/sidebar')
+    @include('layout_dashboard/sidebar')
 
     @yield('main')
 

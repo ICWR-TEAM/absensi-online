@@ -34,6 +34,7 @@ Route::middleware(["auth","CekStatus:admin"])->group(function(){
     Route::get("admin/user/delete/{id}", [AdminController::class, "delete_user"])->name("admin.user.delete");
     Route::get("tambah/user", [AdminController::class, "tambah_user"])->name("tambah.user");
     Route::post("import/excel/user", [AdminController::class, "import_excel_user"])->name("import.excel.user");
+    Route::post("tambah/user", [AdminController::class, "tambah_user_manual"])->name("tambah.user");
 });
 
 // user dashboard

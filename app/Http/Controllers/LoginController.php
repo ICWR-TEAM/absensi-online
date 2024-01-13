@@ -86,7 +86,9 @@ class LoginController extends Controller
                     "name"=>$req->nama,
                     "role"=>"user",
                     "password"=>Hash::make($req->password),
-                    "accept"=>"no"
+                    "accept"=>"no",
+                    "created_at"=>now(),
+                    "updated_at"=>now()
                 ]);
                 if ($insert) {
                     Session::flash("berhasil", "berhasil");

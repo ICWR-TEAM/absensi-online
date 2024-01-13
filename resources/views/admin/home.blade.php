@@ -1,4 +1,4 @@
-@extends('login/master')
+@extends('layout_dashboard/master')
 
 @section('title', 'home')
 

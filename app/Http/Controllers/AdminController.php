@@ -11,20 +11,21 @@ use Yajra\DataTables\Facades\DataTables;
 use App\Imports\UserImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 
 
 class AdminController extends Controller
 {
     public function index()
     {
-        return view('login/home');
+        return view('admin/home');
     }
 
     // user
     public function action_user()
     {
         $data = ViewUser::get();
-        return view("login/action_user", ["data"=>$data]);
+        return view("admin/action_user", ["data"=>$data]);
     }
 
     public function accept_user($id)
@@ -90,6 +91,43 @@ class AdminController extends Controller
             return redirect("tambah/user");
         }
 
+    }
+
+    public function tambah_user_manual(Request $req)
+    {
+        $req->validate([
+            "nama"=>"required",
+            "email"=>"required|email|min:3",
+            "role"=>"required|in:admin,user",
+            "password"=>[
+                "min:8",
+                "regex:/[a-z]/",
+                "regex:/[A-Z]/",
+                "regex:/[0-9]/",
+                "regex:/[@$!'%*#?&]/"
+            ]
+        ]);
+        if (DB::table("users")->where("email",$req->email)->exists()) {
+            Session::flash("duplicate_email","gagal");
+            return redirect("tambah/user");
+        }else{
+            $insert = DB::table("users")->insert([
+                "email"=>$req->email,
+                "name"=>$req->nama,
+                "role"=>$req->role,
+                "password"=>Hash::make($req->password),
+                "accept"=>"yes",
+                "created_at"=>now(),
+                "updated_at"=>now()
+            ]);
+            if ($insert) {
+                Session::flash("berhasil","berhasil");
+                return redirect("tambah/user");
+            }else{
+                Session::flash("gagal","gagal");
+                return redirect("tambah/user");
+            }
+        }
     }
 
     public function logout(Request $req)
