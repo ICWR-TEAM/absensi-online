@@ -23,9 +23,11 @@ Route::get("login", [LoginController::class, "index"])->name("login");
 Route::get("login/create/", [LoginController::class, "create_account"])->name("login.create");
 Route::post("login", [LoginController::class, "action_login"])->name("action_login");
 Route::post("login/create", [LoginController::class, "create_user"])->name("login.create");
+Route::get("reload-captcha", [LoginController::class, "reloadCaptcha"])->name("reload-captcha");
 
 // admin dashboard
 Route::middleware(["auth","CekStatus:admin"])->group(function(){
+    // ROUTE MANAJEMEN USER
     Route::get("admin", [AdminController::class,"index"])->name("admin");
     Route::get("/admin/logout", [AdminController::class, "logout"])->name("admin.logout");
     Route::get("action/user", [AdminController::class, "action_user"])->name("action.user");

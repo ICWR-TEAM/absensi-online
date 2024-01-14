@@ -99,13 +99,7 @@ class AdminController extends Controller
             "nama"=>"required",
             "email"=>"required|email|min:3",
             "role"=>"required|in:admin,user",
-            "password"=>[
-                "min:8",
-                "regex:/[a-z]/",
-                "regex:/[A-Z]/",
-                "regex:/[0-9]/",
-                "regex:/[@$!'%*#?&]/"
-            ]
+            "password"=>"required|min:8"
         ]);
         if (DB::table("users")->where("email",$req->email)->exists()) {
             Session::flash("duplicate_email","gagal");

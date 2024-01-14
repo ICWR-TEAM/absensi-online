@@ -1,1 +1,1 @@
-dari login admin saja
+jangan lupa hidupkan captcha pada config/captcha

@@ -106,7 +106,7 @@
                         <input type="" name="password" value="{{old('password')}}" placeholder="Password..." class="form-control @error('password') is-invalid @enderror" id="rubah_form_password" required>
                         @error('password')
                         <div class="invalid-feedback">
-                            Password harus mengandung karakter angka, huruf minimal 8 karakter, minimal 1 huruf kapital, minimal 1 simbol(@$!'%*#?&) dan harus sama dengan "ulangi password"!
+                            Password harus berisi minimal 8 karakter!
                         </div>
                         @enderror
                         <div class="row container">

@@ -39,13 +39,15 @@ class LoginController extends Controller
     {
         $validated = $req->validate([
             "email"=>"required|email",
-            "password"=>"required"
+            "password"=>"required",
+            "captcha"=>["required", "captcha"]
         ]);
 
         if (DB::table("users")->where("email", $req->email)->value('accept')==="no") {
             Session::flash("not_acc","salah");
             return redirect("login");
         }else{
+            unset($validated["captcha"]);
             if (Auth::Attempt($validated)) {
                 $req->session()->regenerate();
                 if (Auth::user()->role === "admin") {
@@ -74,7 +76,8 @@ class LoginController extends Controller
                 "regex:/[0-9]/",
                 "regex:/[@$!'%*#?&]/"
             ],
-            "password_repeat"=>"required|min:8"
+            "password_repeat"=>"required|min:8",
+            "captcha"=>["captcha", "required"]
         ]);
         if ($validated) {
             if (DB::table("users")->where("email",$req->email)->exists()) {
@@ -99,5 +102,10 @@ class LoginController extends Controller
                 }
             }
         }
+    }
+
+    public function reloadCaptcha()
+    {
+        return response()->json(["captcha"=>captcha_img()]);
     }
 }

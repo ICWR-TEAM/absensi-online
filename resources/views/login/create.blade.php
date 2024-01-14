@@ -53,6 +53,19 @@
                                 Ulangi password harus terisi!
                             </div>
                         @enderror
+
+                        <!-- Captcha -->
+                        <div class="captcha mt-3">
+                            <span>{!! captcha_img() !!}</span>&nbsp;
+                            <button type="button" class="btn btn-danger" id="reload">&#x21bb;</button>
+                        </div>
+                        <input id="captcha" type="text" class="form-control col-md-12 mt-2 @error('captcha') is-invalid @enderror" placeholder="Masukan kode captcha..." name="captcha">
+                        @error("captcha")
+                            <div class="invalid-feedback">
+                                Captcha harus benar!
+                            </div>
+                        @enderror
+
                         <div class="register__form-action mt-3">
                             <button type="submit" class="btn btn--blue col-md-12">Daftar</button>
                         </div>
@@ -100,6 +113,8 @@
             <a href="{{ route('login') }}" class="btn btn--link mb-3">Sudah punya akun? Login!</a>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
     <script type="text/javascript">
     function click_hidden(){
         var input_hidden = document.getElementById("change_password");
@@ -112,6 +127,20 @@
             tulisan_hidden.innerHTML = "&nbsp;Lihat password"
         }
     }
+    $(document).ready(function () {
+        $('#reload').click(function () {
+            $.ajax({
+                type: 'GET',
+                url: "{{ url('reload-captcha') }}",
+                success: function (data) {
+                    $(".captcha span").html(data.captcha);
+                },
+                error: function () {
+                    console.log('Error loading captcha');
+                }
+            });
+        });
+    });
     </script>
 </body>
 </html>

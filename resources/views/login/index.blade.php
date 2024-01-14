@@ -40,6 +40,18 @@
                                 <label for="asd"><small id="hidden_password" class="form-text text-muted mt-2"> &nbsp;Lihat password</small></label>
                             </div>
                         </div>
+
+                        <!-- Captcha -->
+                        <div class="captcha">
+                            <span>{!! captcha_img() !!}</span>&nbsp;
+                            <button type="button" class="btn btn-danger" id="reload">&#x21bb;</button>
+                        </div>
+                        <input id="captcha" type="text" class="form-control col-md-12 mt-2 @error('captcha') is-invalid @enderror" placeholder="Masukan kode captcha..." name="captcha">
+                        @error("captcha")
+                            <div class="invalid-feedback">
+                                Captcha harus benar!
+                            </div>
+                        @enderror
                         <div class="login__form-action mt-3">
                             <!-- <button type="submit" class="btn btn--blue col-md-12 mb-2 mb-sm-0">Login</button> -->
                             <input type="submit" name="submit" class="btn btn--blue col-md-12 mb-2 mb-sm-0" value="Login">
@@ -76,6 +88,7 @@
             <a href="{{ route('login.create') }}" class="btn btn--link mb-3">Buat Akun</a>
         </div><!-- login -->
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
         var tulisan_hidden = document.getElementById("hidden_password");
         var password = document.getElementById("change_password");
@@ -88,6 +101,21 @@
                 password.type = "password";
             }
         }
+        $(document).ready(function () {
+            $('#reload').click(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: "{{ url('reload-captcha') }}",
+                    success: function (data) {
+                        $(".captcha span").html(data.captcha);
+                    },
+                    error: function () {
+                        console.log('Error loading captcha');
+                    }
+                });
+            });
+        });
     </script>
+
 </body>
 </html>
