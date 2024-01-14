@@ -17,6 +17,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
+use App\RiwayatAbsensi;
 
 Route::get('/', [HomeController::class, "index"])->name("home");
 Route::get("login", [LoginController::class, "index"])->name("login");
@@ -47,4 +48,6 @@ Route::middleware(["auth","CekStatus:admin"])->group(function(){
 Route::middleware(["auth", "CekStatus:user"])->group(function(){
     Route::get("user", [UserController::class, "index"])->name("user");
     Route::get("user/logout", [UserController::class, "logout"])->name("user.logout");
+    Route::post("user/simpan", [UserController::class, "simpan_user"])->name("user.simpan");
+    Route::get("user/exists", [UserController::class, "user_exists"])->name("user.exists");
 });

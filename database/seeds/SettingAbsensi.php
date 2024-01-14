@@ -14,7 +14,7 @@ class SettingAbsensi extends Seeder
         \App\SettingAbsensi::create([
             "buka_atau_tutup"=>"buka",
             "tutup_otomatis"=>"tidak",
-            "buka_otomatis"=>"tidak"
+            "buka_otomatis"=>"tidak",
         ]);
     }
 }
