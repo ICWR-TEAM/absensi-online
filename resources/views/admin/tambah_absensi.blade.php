@@ -53,9 +53,9 @@
             <div class="card-body">
                 <strong>Tutup otomatis</strong>
                 <br>
-                <input type="radio" name="tutup_otomatis" value="iya" id="change_tutup_otomatis" @if(old('tutup_otomatis', $value->buka_otomatis)==="iya") checked @endif> <label for="change_tutup_otomatis">Iya</label>
+                <input type="radio" name="tutup_otomatis" value="iya" id="change_tutup_otomatis" @if(old('tutup_otomatis', $value->tutup_otomatis)==="iya") checked @endif> <label for="change_tutup_otomatis">Iya</label>
                 <br>
-                <input type="radio" name="tutup_otomatis" value="tidak" id="change_tutup_otomatis_to_no" @if(old('tutup_otomatis', $value->buka_otomatis)==="tidak") checked @endif> <label for="change_tutup_otomatis_to_no">Tidak</label>
+                <input type="radio" name="tutup_otomatis" value="tidak" id="change_tutup_otomatis_to_no" @if(old('tutup_otomatis', $value->tutup_otomatis)==="tidak") checked @endif> <label for="change_tutup_otomatis_to_no">Tidak</label>
                 @error("tutup_otomatis")
                 <small class="form-text form-text--red">Opsi harus ada yang dipilih!</small>
                 @enderror

@@ -13,7 +13,7 @@ class UserController extends Controller
     public function index()
     {
         if (DB::table("riwayat_absensi")->where("id_user", Auth::user()->id)->exists()) {
-            redirect("user/exists");
+            return redirect("user/exists");
         }else{
             $value = DB::table("users")->where("email", Auth::user()->email)->first();
             return view("user/index")->with("value",$value);
@@ -51,7 +51,35 @@ class UserController extends Controller
 
     public function user_exists()
     {
-        return view("user/exists");
+        if (DB::table("riwayat_absensi")->where("id_user", Auth::user()->id)->exists()) {
+            return view("user/exists");
+        }else{
+            return redirect("user");
+        }
+    }
+
+    public function waktu_buka()
+    {
+        $db = DB::table("setting_absensi")->where("id", 1)->first();
+        $waktu_awal = now();
+        $pisah_buka = explode(":", $db->waktu_buka);
+        $akses_waktu_awal = now()->setTime($pisah_buka[0], $pisah_buka[1], 0);
+        if($waktu_awal > $akses_waktu_awal || $db->buka_otomatis === "tidak"){
+            return redirect()->intended("user");
+        }
+        return view("user/waktu_buka");
+    }
+
+    public function waktu_tutup()
+    {
+        $db = DB::table("setting_absensi")->where("id", 1)->first();
+        $waktu_awal = now();
+        $pisah_tutup = explode(":", $db->waktu_tutup);
+        $akses_waktu_tutup = now()->setTime($pisah_tutup[0], $pisah_tutup[1], 0);
+        if($waktu_awal < $akses_waktu_tutup || $db->tutup_otomatis === "tidak"){
+            return redirect()->intended("user");
+        }
+        return view("user/waktu_tutup");
     }
 
     public function logout(Request $req)

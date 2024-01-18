@@ -18,6 +18,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\RiwayatAbsensi;
+use Illuminate\Support\Facades\DB;
 
 Route::get('/', [HomeController::class, "index"])->name("home");
 Route::get("login", [LoginController::class, "index"])->name("login");
@@ -44,10 +45,15 @@ Route::middleware(["auth","CekStatus:admin"])->group(function(){
     Route::post("tambah/absensi", [AdminController::class, "aksi_presensi"])->name("tamba.absensi");
 });
 
-// user dashboard
+// USER DASHBOARD
 Route::middleware(["auth", "CekStatus:user"])->group(function(){
-    Route::get("user", [UserController::class, "index"])->name("user");
+    // Tanpa middleware Cek Waktu
+    Route::get("user/waktu_tutup", [UserController::class, "waktu_tutup"])->name("waktu_tutup");
+    Route::get("user/waktu_buka", [UserController::class, "waktu_buka"])->name("waktu_buka");
     Route::get("user/logout", [UserController::class, "logout"])->name("user.logout");
-    Route::post("user/simpan", [UserController::class, "simpan_user"])->name("user.simpan");
-    Route::get("user/exists", [UserController::class, "user_exists"])->name("user.exists");
+
+    // Menggunakan middleware Cek Waktu
+    Route::get("user", [UserController::class, "index"])->middleware("CekWaktu")->name("user");
+    Route::post("user/simpan", [UserController::class, "simpan_user"])->middleware("CekWaktu")->name("user.simpan");
+    Route::get("user/exists", [UserController::class, "user_exists"])->middleware("CekWaktu")->name("user.exists");
 });
