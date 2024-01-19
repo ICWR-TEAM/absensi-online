@@ -1,5 +1,5 @@
 @extends("user/layout/master")
-@section("title", "Presensi buka jam ".$cek_hari)
+@section("title", "Pembaruan administrator")
 @push("css")
 <style>
 .content {
@@ -18,11 +18,11 @@
             <div class="card border-danger shadow" style="min-width: 250px">
                 <div class="card-body">
                     <div class=" d-flex justify-content-center">
-                        <img src="{{ asset('img/tunggu.jpg') }}" alt=""  style="max-width: 250px;">
+                        <img src="{{ asset('img/update.jpg') }}" alt=""  style="max-width: 250px;">
                     </div>
                     <br>
                     <p class="text-center text-danger">
-                        Waktu buka presensi adalah jam: {{ $cek_hari }}, silahkan <a href="{{ route('user.logout') }}">Logout</a> untuk keluar halaman.
+                        Presensi belum update, silahkan hubungi administrator untuk pembaruan absensi!
                     </p>
                 </div>
             </div>

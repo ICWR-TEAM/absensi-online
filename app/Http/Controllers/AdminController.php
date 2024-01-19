@@ -16,16 +16,32 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
+    private function cek_hari(){
+        $db = DB::table("setting_absensi")->where("id", 1)->first();
+
+        $waktu_awal = now();
+        $pisah_tanggal_waktu = explode(" ", $db->updated_at);
+        $pisah_tanggal = explode("-", $pisah_tanggal_waktu[0]);
+        $cek_hari = now()->setDate($pisah_tanggal[0], $pisah_tanggal[1], $pisah_tanggal[2]);
+        $hari_sekarang = now();
+        if($hari_sekarang->isSameDay($cek_hari)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public function index()
     {
-        return view('admin/home');
+        $cek = ["cek_hari" => $this->cek_hari()];
+        return view('admin/home', $cek);
     }
 
     // user
     public function action_user()
     {
         $data = ViewUser::get();
-        return view("admin/action_user", ["data"=>$data]);
+        return view("admin/action_user", ["data"=>$data, "cek_hari" => $this->cek_hari()]);
     }
 
     public function accept_user($id)
@@ -54,7 +70,7 @@ class AdminController extends Controller
 
     public function tambah_user()
     {
-        return view("admin/tambah_user");
+        return view("admin/tambah_user", ["cek_hari"=>$this->cek_hari()]);
     }
 
     public function import_excel_user(Request $req)

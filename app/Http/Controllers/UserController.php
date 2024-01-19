@@ -52,7 +52,8 @@ class UserController extends Controller
     public function user_exists()
     {
         if (DB::table("riwayat_absensi")->where("id_user", Auth::user()->id)->exists()) {
-            return view("user/exists");
+            $data = DB::table("riwayat_absensi")->where("id_user", Auth::user()->id)->first();
+            return view("user/exists", ["cek_hari" => $data->updated_at]);
         }else{
             return redirect("user");
         }
@@ -67,7 +68,8 @@ class UserController extends Controller
         if($waktu_awal > $akses_waktu_awal || $db->buka_otomatis === "tidak"){
             return redirect()->intended("user");
         }
-        return view("user/waktu_buka");
+        $data = DB::table("setting_absensi")->where("id", 1)->first()->waktu_buka;
+        return view("user/waktu_buka", ["cek_hari" => $data]);
     }
 
     public function waktu_tutup()
@@ -79,7 +81,22 @@ class UserController extends Controller
         if($waktu_awal < $akses_waktu_tutup || $db->tutup_otomatis === "tidak"){
             return redirect()->intended("user");
         }
-        return view("user/waktu_tutup");
+        $data = DB::table("setting_absensi")->where("id", 1)->first()->waktu_tutup;
+        return view("user/waktu_tutup", ["cek_hari" => $data]);
+    }
+
+    public function set_update()
+    {
+        $db = DB::table("setting_absensi")->where("id", 1)->first();
+        $waktu_awal = now();
+        $pisah_tanggal_waktu = explode(" ", $db->updated_at);
+        $pisah_tanggal = explode("-", $pisah_tanggal_waktu[0]);
+        $cek_hari = now()->setDate($pisah_tanggal[0], $pisah_tanggal[1], $pisah_tanggal[2]);
+        $hari_sekarang = now();
+        if($hari_sekarang->isSameDay($cek_hari)){
+            return redirect()->intended("user");
+        }
+        return view("user/waktu_update");
     }
 
     public function logout(Request $req)

@@ -16,6 +16,14 @@
             </div>
         </header>
     </div><!-- row -->
+    @if($cek_hari==0)
+    <div class="card text-white bg-danger mb-3 col-md-12">
+      <div class="card-body">
+        <h5 class="card-title">Peringatan!!!</h5>
+        <p class="card-text">Silahkan update pengaturan presensi pada menu <a href='{{ route("tambah.absensi") }}' class="text-white">"Atur presensi > Buat presensi"</a>, jika tidak maka user tidak bisa melakukan presensi.</p>
+      </div>
+    </div>
+    @endif
     <pre>
         <table id="users-table" class="table table-bordered table-hover">
           <thead>

@@ -16,7 +16,7 @@
         </li>
         <li class="sidebar__item">
             <a class="sidebar__btn-dropdown" href="#">
-                <span class="fa fa-list"></span> Setting presensi
+                <span class="fa fa-list"></span> Atur presensi
             </a>
             <ul class="sidebar__dropdown">
                 <li class="sidebar__dropdown-item"><a href="{{ route('tambah.absensi') }}">Buat presensi</a></li>

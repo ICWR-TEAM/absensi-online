@@ -50,6 +50,7 @@ Route::middleware(["auth", "CekStatus:user"])->group(function(){
     // Tanpa middleware Cek Waktu
     Route::get("user/waktu_tutup", [UserController::class, "waktu_tutup"])->name("waktu_tutup");
     Route::get("user/waktu_buka", [UserController::class, "waktu_buka"])->name("waktu_buka");
+    Route::get("user/set_update", [UserController::class, "set_update"])->name("user.set_update");
     Route::get("user/logout", [UserController::class, "logout"])->name("user.logout");
 
     // Menggunakan middleware Cek Waktu

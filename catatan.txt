@@ -1,1 +1,2 @@
 jangan lupa hidupkan captcha pada config/captcha
+jika update absensi maka hapus riwayat
