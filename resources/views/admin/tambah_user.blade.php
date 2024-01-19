@@ -38,44 +38,6 @@
                     </div>
                     <input type="submit" name="submit" value="Tambahkan" class="btn btn--blue mt-3 col-md-12">
                 </form>
-                @if(session("berhasil_import"))
-                <div class="alert alert--success">
-                    <div class="alert__icon">
-                        <span class="fa fa-check-circle"></span>
-                    </div>
-                    <div class="alert__description">
-                        <p>Berhasil import user!</p>
-                    </div>
-                    <div class="alert__action">
-                        <a class="alert__close-btn">&times;</a>
-                    </div>
-                </div><!-- alert -->
-                @elseif(session("gagal_import"))
-                <div class="alert alert--danger">
-                    <div class="alert__icon">
-                        <span class="fa fa-ban"></span>
-                    </div>
-                    <div class="alert__description">
-                        <p>Gagal import user, silahkan hubungi administrator!</p>
-                    </div>
-                    <div class="alert__action">
-                        <a class="alert__close-btn">&times;</a>
-                    </div>
-                </div><!-- alert -->
-                @endif
-                @if(session("gagal_import_duplicate"))
-                <div class="alert alert--danger">
-                    <div class="alert__icon">
-                        <span class="fa fa-ban"></span>
-                    </div>
-                    <div class="alert__description">
-                        <p>{{ session("gagal_import_duplicate") }}!</p>
-                    </div>
-                    <div class="alert__action">
-                        <a class="alert__close-btn">&times;</a>
-                    </div>
-                </div><!-- alert -->
-                @endif
               </div>
             </div>
 
@@ -123,32 +85,6 @@
                         </div>
                         <input type="submit" name="submit" value="Tambah user" class="btn btn--blue col-md-12 mt-3">
                     </form>
-                    @if(session("berhasil"))
-                    <div class="alert alert--success mt-3">
-                        <div class="alert__icon">
-                            <span class="fa fa-check-circle"></span>
-                        </div>
-                        <div class="alert__description">
-                            <p>Berhasil tambah user!</p>
-                        </div>
-                        <div class="alert__action">
-                            <a class="alert__close-btn">&times;</a>
-                        </div>
-                    </div><!-- alert -->
-                    @endif
-                    @if(session("gagal"))
-                    <div class="alert alert--danger mt-3">
-                        <div class="alert__icon">
-                            <span class="fa fa-ban"></span>
-                        </div>
-                        <div class="alert__description">
-                            <p>Gagal tambah user, silahkan hubungi administrator!</p>
-                        </div>
-                        <div class="alert__action">
-                            <a class="alert__close-btn">&times;</a>
-                        </div>
-                    </div>
-                    @endif
                 </div>
             </div>
         </div>
@@ -168,6 +104,48 @@
             form.type = "password";
         }
     }
+
+    @if(session("berhasil_import"))
+    Swal.fire({
+      title: "Berhasil!",
+      text: "Anda berhasil import user dengan otomatis!",
+      icon: "success"
+    });
+    @elseif(session("gagal_import"))
+    Swal.fire({
+      title: "Gagal!",
+      text: "Anda gagal import user dengan otomatis, silahkan cek konfigurasi!",
+      icon: "error"
+    });
+    @endif
+    @if(session("gagal_import_duplicate"))
+    Swal.fire({
+      title: "Gagal!",
+      text: "Data duplicate, silahkan cek ulang!",
+      icon: "error"
+    });
+    @endif
+    @if(session("berhasil"))
+    Swal.fire({
+      title: "Berhasil!",
+      text: "Berhasil tambah user!",
+      icon: "success"
+    });
+    @endif
+    @if(session("gagal"))
+    Swal.fire({
+      title: "Gagal!",
+      text: "Gagal tambah user, silahkan cek konfigurasi!",
+      icon: "error"
+    });
+    @endif
+    @if(session("duplicate_email"))
+    Swal.fire({
+      title: "Gagal!",
+      text: "Gagal tambah user, karena data duplicate!",
+      icon: "error"
+    });
+    @endif
 </script>
 @endpush
 @endsection

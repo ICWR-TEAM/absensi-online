@@ -50,6 +50,7 @@ class LoginController extends Controller
             unset($validated["captcha"]);
             if (Auth::Attempt($validated)) {
                 $req->session()->regenerate();
+                Session::flash("success_login", "success");
                 if (Auth::user()->role === "admin") {
                     return redirect()->intended("admin");
                 }elseif(Auth::user()->role === "user"){

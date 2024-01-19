@@ -70,51 +70,14 @@
                             <button type="submit" class="btn btn--blue col-md-12">Daftar</button>
                         </div>
                     </form>
-                    @if(session("berhasil"))
-                    <div class="alert alert--success">
-                        <div class="alert__icon">
-                            <span class="fa fa-check-circle"></span>
-                        </div>
-                        <div class="alert__description">
-                            <p>Berhasil membuat akun, silahkan menunggu konfirmasi administrator selanjutnya!</p>
-                        </div>
-                        <div class="alert__action">
-                            <a class="alert__close-btn">&times;</a>
-                        </div>
-                    </div>
-                    @elseif(session('gagal'))
-                    <div class="alert alert--danger">
-                        <div class="alert__icon">
-                            <span class="fa fa-ban"></span>
-                        </div>
-                        <div class="alert__description">
-                            <p>Gagal membuat akun, silahkan menghubungi administrator!</p>
-                        </div>
-                        <div class="alert__action">
-                            <a class="alert__close-btn">&times;</a>
-                        </div>
-                    </div>
-                    @endif
-                    @if(session('email_exists'))
-                    <div class="alert alert--danger">
-                        <div class="alert__icon">
-                            <span class="fa fa-ban"></span>
-                        </div>
-                        <div class="alert__description">
-                            <p>Email sudah ada, silahkan hubungi operator!</p>
-                        </div>
-                        <div class="alert__action">
-                            <a class="alert__close-btn">&times;</a>
-                        </div>
-                    </div>
-                    @endif
                 </div>
             </div>
             <a href="{{ route('login') }}" class="btn btn--link mb-3">Sudah punya akun? Login!</a>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script type="text/javascript">
     function click_hidden(){
         var input_hidden = document.getElementById("change_password");
@@ -141,6 +104,26 @@
             });
         });
     });
+    @if(session("berhasil"))
+    Swal.fire({
+      title: "Berhasil!",
+      text: "Berhasil membuat akun, silahkan menunggu konfirmasi administrator selanjutnya!",
+      icon: "success"
+    });
+    @elseif(session('gagal'))
+    Swal.fire({
+      title: "Gagal!",
+      text: "Gagal membuat akun, silahkan menghubungi administrator!",
+      icon: "error"
+    });
+    @endif
+    @if(session('email_exists'))
+    Swal.fire({
+      title: "Gagal!",
+      text: "Email sudah ada, silahkan hubungi operator!",
+      icon: "error"
+    });
+    @endif
     </script>
 </body>
 </html>

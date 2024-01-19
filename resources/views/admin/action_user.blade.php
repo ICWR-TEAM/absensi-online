@@ -51,57 +51,9 @@
           </tbody>
         </table>
     </pre>
-    @if(session("berhasil"))
-    <div class="alert alert--success">
-        <div class="alert__icon">
-            <span class="fa fa-check-circle"></span>
-        </div>
-        <div class="alert__description">
-            <p>Berhasil terima user!</p>
-        </div>
-        <div class="alert__action">
-            <a class="alert__close-btn">&times;</a>
-        </div>
-    </div>
-    @elseif(session("gagal"))
-    <div class="alert alert--danger">
-        <div class="alert__icon">
-            <span class="fa fa-ban"></span>
-        </div>
-        <div class="alert__description">
-            <p>Gagal terima user, silahkan hubungi administrator!</p>
-        </div>
-        <div class="alert__action">
-            <a class="alert__close-btn">&times;</a>
-        </div>
-    </div>
-    @endif
 
-    @if(session("berhasil_delete"))
-    <div class="alert alert--success">
-        <div class="alert__icon">
-            <span class="fa fa-check-circle"></span>
-        </div>
-        <div class="alert__description">
-            <p>Berhasil hapus user!</p>
-        </div>
-        <div class="alert__action">
-            <a class="alert__close-btn">&times;</a>
-        </div>
-    </div>
-    @elseif(session("gagal_delete"))
-    <div class="alert alert--danger">
-        <div class="alert__icon">
-            <span class="fa fa-ban"></span>
-        </div>
-        <div class="alert__description">
-            <p>Gagal delete user, silahkan hubungi administrator!</p>
-        </div>
-        <div class="alert__action">
-            <a class="alert__close-btn">&times;</a>
-        </div>
-    </div>
-    @endif
+
+
 </main>
 @push("script")
 
@@ -111,6 +63,35 @@
     $(document).ready(function(){
         $("#users-table").DataTable();
     });
+
+    @if(session("berhasil"))
+    Swal.fire({
+      title: "Berhasil!",
+      text: "Anda berhasil menerima user!",
+      icon: "success"
+    });
+    @elseif(session("gagal"))
+    Swal.fire({
+      title: "Gagal!",
+      text: "Anda gagal menerima user, silahkan cek konfigurasi!",
+      icon: "error"
+    });
+    @endif
+
+    @if(session("berhasil_delete"))
+    Swal.fire({
+      title: "Berhasil!",
+      text: "Anda berhasil hapus user!",
+      icon: "success"
+    });
+    @elseif(session("gagal_delete"))
+    Swal.fire({
+      title: "Gagal!",
+      text: "Anda gagal menghapus user, silahkan cek konfigurasi!",
+      icon: "error"
+    });
+    @endif
+
 </script>
 @endpush
 @endsection

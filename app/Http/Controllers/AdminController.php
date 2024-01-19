@@ -169,6 +169,8 @@ class AdminController extends Controller
             "created_at"=>now(),
             "updated_at"=>now()
         ]);
+
+        $drop_table_riwayat_absensi = DB::table("riwayat_absensi")->truncate();
         if ($update) {
             Session::flash("berhasil_update");
             return redirect("tambah/absensi");

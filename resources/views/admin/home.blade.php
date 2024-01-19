@@ -26,3 +26,24 @@
     </div><!-- row -->
 </main>
 @endsection
+@if(session("success_login"))
+    @push("script")
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          }
+        });
+        Toast.fire({
+          icon: "success",
+          title: "Berhasil login!"
+        });
+    </script>
+    @endpush
+@endif

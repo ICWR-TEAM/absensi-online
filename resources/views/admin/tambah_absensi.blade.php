@@ -15,7 +15,7 @@
             </div>
         </header>
     </div><!-- row -->
-    <form method="post">
+    <form method="post" action="{{route('tambah.absensi')}}">
         @csrf
         <div class="card">
             <div class="card-body">
@@ -73,37 +73,10 @@
                 <textarea name="deskripsi" rows="8" cols="80" class="form-control mt-3" placeholder="Deskripsi...">{{ old("deskripsi") ? old("deskripsi") : $value->deskripsi }}</textarea>
             </div>
         </div>
-        <input type="submit" name="submit" value="Tambah presensi" class="btn btn--blue col-md-12 mt-3">
+        <!-- <input type="submit" name="submit" value="Tambah presensi" class="btn btn--blue col-md-12 mt-3"> -->
+        <button type="submit" name="button" class="btn btn--blue col-md-12 mt-3">Tambah presensi</button>
     </form>
-    @if(session("berhasil_update"))
 
-    <div class="alert alert--success mt-3">
-        <div class="alert__icon">
-            <span class="fa fa-check-circle"></span>
-        </div>
-        <div class="alert__description">
-            <p>Berhasil update presensi!</p>
-        </div>
-        <div class="alert__action">
-            <a class="alert__close-btn">&times;</a>
-        </div>
-    </div>
-
-    @elseif(session("gagal_update"))
-
-    <div class="alert alert--danger mt-3">
-        <div class="alert__icon">
-            <span class="fa fa-ban"></span>
-        </div>
-        <div class="alert__description">
-            <p>Behasil update presensi!</p>
-        </div>
-        <div class="alert__action">
-            <a class="alert__close-btn">&times;</a>
-        </div>
-    </div>
-
-    @endif
 </main>
 
 @push("script")
@@ -139,6 +112,53 @@
         var value_waktututup = document.getElementById("waktu_tutup");
         value_waktututup.type = "hidden";
     }
+
+    $(document).ready(function() {
+      $('form').submit(function(e) {
+        e.preventDefault();
+        const form = this;
+
+        Swal.fire({
+          title: 'Apakah Anda akan memperbarui presensi?',
+          html: "Jika yakin maka daftar riwayat presensi akan terhapus, jika ingin cek/mengunduh daftar riwayat presensi silahkan pencet [<a href='{{ route('admin.cek_riwayat') }}'>Disini</a>]!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Ya, tambahkan!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            form.submit();
+          }
+        });
+      });
+    });
+
+    @if(session("berhasil_update"))
+
+    Swal.fire({
+      title: "Berhasil!",
+      text: "Anda berhasil memperbarui presensi!",
+      icon: "success"
+    });
+
+
+    @elseif(session("gagal_update"))
+
+    Swal.fire({
+      title: "Gagal!",
+      text: "Anda gagal update berita, silahkan cek konfigurasi!",
+      icon: "error"
+    });
+
+
+    @endif
+
+
+
+
+
+
 </script>
 
 @endpush

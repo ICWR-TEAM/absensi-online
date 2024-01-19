@@ -42,7 +42,8 @@ Route::middleware(["auth","CekStatus:admin"])->group(function(){
 
     //absensi
     Route::get("tambah/absensi", [AdminController::class, "tambah_absensi"])->name("tambah.absensi");
-    Route::post("tambah/absensi", [AdminController::class, "aksi_presensi"])->name("tamba.absensi");
+    Route::post("tambah/absensi", [AdminController::class, "aksi_presensi"])->name("tambah.absensi");
+    Route::get("admin/cek_riwayat", [AdminController::class, "cek_riwayat"])->name("admin.cek_riwayat");
 });
 
 // USER DASHBOARD

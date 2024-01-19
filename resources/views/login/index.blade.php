@@ -56,32 +56,6 @@
                             <!-- <button type="submit" class="btn btn--blue col-md-12 mb-2 mb-sm-0">Login</button> -->
                             <input type="submit" name="submit" class="btn btn--blue col-md-12 mb-2 mb-sm-0" value="Login">
                         </div>
-                        @if(session('error'))
-                            <div class="alert alert--danger mt-3">
-                                <div class="alert__icon">
-                                    <span class="fa fa-ban"></span>
-                                </div>
-                                <div class="alert__description">
-                                    <p>Username atau password salah!</p>
-                                </div>
-                                <div class="alert__action">
-                                    <a class="alert__close-btn">&times;</a>
-                                </div>
-                            </div>
-                        @endif
-                        @if(session('not_acc'))
-                            <div class="alert alert--danger mt-3">
-                                <div class="alert__icon">
-                                    <span class="fa fa-ban"></span>
-                                </div>
-                                <div class="alert__description">
-                                    <p>Akun belum aktif, silahkan hubungi operator!</p>
-                                </div>
-                                <div class="alert__action">
-                                    <a class="alert__close-btn">&times;</a>
-                                </div>
-                            </div>
-                        @endif
                     </form>
                 </div>
             </div>
@@ -89,6 +63,7 @@
         </div><!-- login -->
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript">
         var tulisan_hidden = document.getElementById("hidden_password");
         var password = document.getElementById("change_password");
@@ -115,6 +90,20 @@
                 });
             });
         });
+        @if(session('error'))
+            Swal.fire({
+              title: "Gagal!",
+              text: "Username atau password salah!",
+              icon: "error"
+            });
+        @endif
+        @if(session('not_acc'))
+            Swal.fire({
+              title: "Gagal!",
+              text: "Akun belum aktif, silahkan hubungi operator!",
+              icon: "error"
+            });
+        @endif
     </script>
 
 </body>
