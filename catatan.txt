@@ -1,2 +1,3 @@
 jangan lupa hidupkan captcha pada config/captcha
+lihat absensi user dan download excel/pdf
 jika update absensi maka hapus riwayat
