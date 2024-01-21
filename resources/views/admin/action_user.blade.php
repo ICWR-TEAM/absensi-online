@@ -25,7 +25,7 @@
     </div>
     @endif
     <pre>
-        <table id="users-table" class="table table-bordered table-hover">
+        <table id="users-table" class="table table-striped table-hover">
           <thead>
             <tr>
               <th width="50px">No</th>

@@ -181,6 +181,25 @@ class AdminController extends Controller
 
     }
 
+    public function cek_riwayat()
+    {
+        $data = [
+            "riwayat" =>
+            DB::table("riwayat_absensi")
+            ->rightJoin("users", "riwayat_absensi.id_user", "=", "users.id")
+            ->where("users.role", "=", "user")
+            ->select("users.name", "users.email", "riwayat_absensi.*")
+            ->orderByRaw("CASE WHEN riwayat_absensi.keterangan = 'hadir' THEN 1 ELSE 2 END")
+            ->get()
+        ];
+        return view("admin/cek_riwayat", $data);
+    }
+
+    public function download_riwayat()
+    {
+        return Excel::download(new \App\Exports\RiwayatExport, "export.xlsx");
+    }
+
     public function logout(Request $req)
     {
         Auth::logout();
