@@ -1,3 +1,6 @@
 jangan lupa hidupkan captcha pada config/captcha
 lihat absensi user dan download excel/pdf
 jika update absensi maka hapus riwayat
+
+AppServiceProvider saya ganti pada function boot untuk mengganti route("menjadi https ujicoba ngrok")
+untuk asset jika ingin menggunakan https bisa menambahkan ASSET_URL pada .env 
