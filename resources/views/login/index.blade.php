@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('/dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/dist/css/reza-admin.min.css') }}">
-    <link rel="icon" href="{{ asset('/dist/img/Reza_Admin.ico') }}">
+    <link rel="icon" href="https://incrustwerush.org/img/site/icon.ico">
 </head>
 <body>
     <div class="container-fluid">
