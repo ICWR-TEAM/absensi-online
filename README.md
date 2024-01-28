@@ -29,9 +29,24 @@ Aplikasi Absensi Online dibangun menggunakan framework PHP Laravel, memberikan s
     7. DB_USERNAME=icwr / sesuaikan username database anda
     8. DB_PASSWORD=icwr / sesuaikan password database anda
     9. APP_ENV=local / production / testing (sesuaikan dengan lingkungan anda)
-    
 
-
+### Default akun
+    Email: icwr@icwr.com
+    Password: icwr
 
 ### Hal yang harus diperhatikan
     1. Harus menggunakan https demi kelancaran library webcam
+    2. Ubah username dan password default dengan cara
+        tambahkan user pada dashboard admin dan hapus
+        user icwr (demi keamanan website anda)
+
+### Komponen
+- Laravel
+- Bootstrap
+- Jquery
+- Datables
+- Chart.js
+- Webcam.js
+- Dashboard admin [Reza-Admin](https://github.com/rezafikkri/Reza-Admin)
+
+###
