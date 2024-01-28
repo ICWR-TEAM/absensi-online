@@ -15,14 +15,19 @@ Aplikasi Absensi Online dibangun menggunakan framework PHP Laravel, memberikan s
 
 ### Cara penggunaan
     1. Unduh repository ini
-    2. Setting .env file (Sub judul selanjutnya)
-    3. Import .sql file didalam repository ini
-    4. Selanjutnya file setting file .env di bawah ini
+    2. Jalankan "composer install"
+    3. Jalankan "cp .env.example .env"
+    4. Jalankan "php artisan key:generate"
+    5. Jalankan "php artisan migrate:fresh"
+    6. Jalankan "php artisan db:seed --class=CreateUserAdmin"
+    7. Jalankan "php artisan db:seed --class=SettingAbsensi"
+    8. Setting .env file (Sub judul selanjutnya)
+    9. Selanjutnya file setting file .env di bawah ini
 
 ### Cara setting file .env
     1. APP_DEBUG=false
     2. APP_URL=https://sesuaikan_url_anda.com *disarankan / http://sesuaikan_url_anda.com
-    3. FORCE_HTTPS=true(jika menggunakan protokol https *disarankan) / false(jika menggunakan protokol http)
+    3. Tambahkan FORCE_HTTPS=true(jika menggunakan protokol https *disarankan) / false(jika menggunakan protokol http)
     4. DB_HOST=host_mysql
     5. DB_PORT=3306 / sesuaikan port mysql anda
     6. DB_DATABASE=absensi_online / sesuaikan nama database anda
