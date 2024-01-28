@@ -1,6 +1,6 @@
 @extends('layout_dashboard/master')
 
-@section('title', 'home')
+@section('title', 'Dashboard')
 
 @section('main')
 
