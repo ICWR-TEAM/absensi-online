@@ -3,4 +3,19 @@ lihat absensi user dan download excel/pdf
 jika update absensi maka hapus riwayat
 
 AppServiceProvider saya ganti pada function boot untuk mengganti route("menjadi https ujicoba ngrok")
-untuk asset jika ingin menggunakan https bisa menambahkan ASSET_URL pada .env 
+untuk asset jika ingin menggunakan https bisa menambahkan ASSET_URL pada .env
+
+
+
+
+
+
+Mengizinkan Akses Kamera pada HTTP (Tidak Disarankan):
+Jika Anda tetap ingin mengizinkan akses kamera dari halaman yang diakses melalui HTTP, Anda bisa menyesuaikan kebijakan keamanan browser dengan menambahkan peraturan tertentu. Namun, ini tidak disarankan karena dapat meningkatkan risiko keamanan.
+
+Contoh untuk Google Chrome:
+
+bash
+Copy code
+chrome://flags/#unsafely-treat-insecure-origin-as-secure
+Tetapi, perhatikan bahwa ini adalah langkah yang tidak disarankan karena mengakses kamera dari halaman yang tidak aman dapat membuka potensi risiko keamanan.

@@ -16,6 +16,13 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
+    function __construct(){
+        //CEK HTTPS OR NO
+        if (Request::capture()->header('x-forwarded-proto') !== 'https') {
+            Session::flash("error_https", "error");
+        }
+    }
+
     private function cek_hari(){
         $db = DB::table("setting_absensi")->where("id", 1)->first();
 

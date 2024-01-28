@@ -173,4 +173,13 @@
         }
         new Chart(pieChart, configPieChart);
     </script>
+    @if(session("error_https"))
+    <script type="text/javascript">
+        Swal.fire({
+          title: "Peringatan!",
+          text: "Situs web Anda tidak menggunakan protokol HTTPS. Harap perbaiki konfigurasi situs web Anda agar menggunakan protokol HTTPS, karena ini dapat menyebabkan masalah dengan kamera web!",
+          icon: "warning"
+        });
+    </script>
+    @endif
     @endpush
