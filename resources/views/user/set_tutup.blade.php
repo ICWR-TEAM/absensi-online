@@ -1,5 +1,5 @@
 @extends("user/layout/master")
-@section("title", "Pembaruan administrator")
+@section("title", "Presensi tutup")
 @push("css")
 <style>
 .content {
@@ -18,11 +18,10 @@
             <div class="card border-danger shadow" style="min-width: 250px">
                 <div class="card-body">
                     <div class=" d-flex justify-content-center">
-                        <img src="{{ asset('img/update.jpg') }}" alt=""  style="max-width: 250px;">
+                        <img src="{{ asset('img/stop.jpg') }}" alt=""  style="max-width: 250px;">
                     </div>
-                    <br>
                     <p class="text-center text-danger">
-                        Presensi belum update, silahkan hubungi administrator untuk pembaruan absensi!
+                        Presensi ditutup, silahkan hubungi administrator untuk membukanya!
                         <br>
                         [ <a href="{{ route('user.logout') }}">Logout</a> ]
                     </p>

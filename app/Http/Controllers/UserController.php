@@ -99,6 +99,15 @@ class UserController extends Controller
         return view("user/waktu_update");
     }
 
+    public function set_tutup()
+    {
+        $db = DB::table("setting_absensi")->where("id", 1)->first();
+        if ($db->buka_atau_tutup === "buka") {
+            return redirect()->intended("user");
+        }
+        return view("user/set_tutup");
+    }
+
     public function logout(Request $req)
     {
         Auth::logout();

@@ -33,8 +33,28 @@ class AdminController extends Controller
 
     public function index()
     {
-        $cek = ["cek_hari" => $this->cek_hari()];
-        return view('admin/home', $cek);
+        $data = [
+            "cek_hari" => $this->cek_hari(),
+            "data_admin" => DB::table("users")->where("role", "admin"),
+            "data_user" => DB::table("users")->where("role", "user"),
+            "data_user_in_table" => DB::table("users")->where("role", "user")->get(),
+            "data_absensi" => DB::table("setting_absensi")->where("id", 1)->first(),
+            "count_hadirRiwayatPresensi" => DB::table("riwayat_absensi")
+                        ->rightJoin("users", "riwayat_absensi.id_user", "=", "users.id")
+                        ->where("users.role", "=", "user")
+                        ->where("riwayat_absensi.keterangan", "=", "Hadir")
+                        ->select("users.name", "users.email", "riwayat_absensi.*")
+                        ->orderByRaw("CASE WHEN riwayat_absensi.keterangan = 'hadir' THEN 1 ELSE 2 END")
+                        ->count(),
+            "count_allUsers" =>  DB::table("riwayat_absensi")
+                        ->rightJoin("users", "riwayat_absensi.id_user", "=", "users.id")
+                        ->where("users.role", "=", "user")
+                        ->select("users.name", "users.email", "riwayat_absensi.*")
+                        ->orderByRaw("CASE WHEN riwayat_absensi.keterangan = 'hadir' THEN 1 ELSE 2 END")
+                        ->count(),
+        ];
+        // return $data["data_user"];
+        return view('admin/home', $data);
     }
 
     // user
@@ -190,7 +210,8 @@ class AdminController extends Controller
             ->where("users.role", "=", "user")
             ->select("users.name", "users.email", "riwayat_absensi.*")
             ->orderByRaw("CASE WHEN riwayat_absensi.keterangan = 'hadir' THEN 1 ELSE 2 END")
-            ->get()
+            ->get(),
+            "cek_hari"=>$this->cek_hari()
         ];
         return view("admin/cek_riwayat", $data);
     }
