@@ -18,12 +18,5 @@ class CreateUserAdmin extends Seeder
             "role"=>"admin",
             "accept"=>"yes"
         ]);
-        \App\User::create([
-            "name"=>"bilhaq syahbani sahatmojo",
-            "email"=>"bilhaqss@gmail.com",
-            "password"=>Hash::make("bilhaqss"),
-            "role"=>"user",
-            "accept"=>"yes"
-        ]);
     }
 }
