@@ -53,5 +53,7 @@ Aplikasi Absensi Online dibangun menggunakan framework PHP Laravel, memberikan s
 - Chart.js
 - Webcam.js
 - Dashboard admin [Reza-Admin](https://github.com/rezafikkri/Reza-Admin)
+  
+[![My Skills](https://skillicons.dev/icons?i=php,mysql,js,html,css,bootstrap,laravel)](https://skillicons.dev)
 
-###
+![visitor badge](https://visitor-badge.laobi.icu/badge?page_id=ICWR-TEAM.absensi-online&left_text=My%20Page%20Visitors)
