@@ -39,7 +39,7 @@
                 <div class="info-box__description">
                     <h2>Jumlah Admin</h2>
                     <h1>{{ $data_admin->count() }}</h1>
-                    <time class="">Terakhir: {{ $data_admin->latest("updated_at")->first()->updated_at }}</time>
+                    <time class="">Terakhir: {{ $data_admin->latest("updated_at")->first() ? $data_admin->latest("updated_at")->first()->updated_at : "Tidak diketahui" }}</time>
                 </div>
                 <a class="info-box__btn-detail" href="{{ route('action.user') }}"><span class="fa fa-arrow-right"></span></a>
             </section>
@@ -50,7 +50,7 @@
                 <div class="info-box__description">
                     <h2>Jumlah User</h2>
                     <h1>{{ $data_user->count() }}</h1>
-                    <time class="">Terakhir: {{ $data_user->latest("updated_at")->first()->updated_at }}</time>
+                    <time class="">Terakhir: {{ $data_user->latest("updated_at")->first() ? $data_user->latest("updated_at")->first()->updated_at : "Tidak diketahui" }}</time>
                 </div>
                 <a class="info-box__btn-detail" href="{{ route('action.user') }}"><span class="fa fa-arrow-right"></span></a>
             </section>
@@ -93,14 +93,18 @@
         <div class="container mt-3">
             <div class="card border-0">
                 <div class="card-body shadow">
-                    <section class="chart">
-                        <div class="chart__header">
-                            <h6>Grafik presensi user {{ explode(" ", $data_absensi->updated_at)[0] }}</h6>
-                        </div>
-                        <div class="chart__body">
-                            <canvas id="pie_chart"></canvas>
-                        </div>
-                    </section>
+                    <?php if ($data_user->latest("updated_at")->first()){ ?>
+                        <section class="chart">
+                            <div class="chart__header">
+                                <h6>Grafik presensi user {{ explode(" ", $data_absensi->updated_at)[0] }}</h6>
+                            </div>
+                            <div class="chart__body">
+                                <canvas id="pie_chart"></canvas>
+                            </div>
+                        </section>
+                    <?php }else{ ?>
+                        <h2 class="text-center">Data grafik tidak ada!</h2>
+                    <?php } ?>
                 </div>
             </div>
         </div>
