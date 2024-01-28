@@ -45,7 +45,7 @@ class LoginController extends Controller
 
         if (DB::table("users")->where("email", $req->email)->value('accept')==="no") {
             Session::flash("not_acc","salah");
-            return redirect("login");
+            return redirect("/");
         }else{
             unset($validated["captcha"]);
             if (Auth::Attempt($validated)) {
@@ -58,7 +58,7 @@ class LoginController extends Controller
                 }
             }else {
                 Session::flash("error","password salah");
-                return redirect("login");
+                return redirect("/");
             }
         }
     }

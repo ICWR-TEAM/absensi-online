@@ -13,7 +13,7 @@
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"> -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" />
 
-    <link rel="icon" href="{{ asset('dist/img/Reza_Admin.ico') }}">
+    <link rel="icon" href="https://incrustwerush.org/img/site/icon.ico">
 </head>
 <body>
 
@@ -21,7 +21,8 @@
     <nav class="navbar justify-content-start navbar--white">
         <a class="navbar__sidebar-toggler" href="#"><span class="fa fa-bars"></span></a>
         <a class="navbar-brand ml-3" href="#">
-            <img src="[host mu]/dist/img/Reza_Admin.svg" width="120" alt="logo reza">
+            <img src="https://incrustwerush.org/img/site/icon.ico" width="30px" alt="logo icwr">
+            In Crust We Rush
         </a>
     </nav>
 
@@ -32,8 +33,8 @@
 
     <!-- footer -->
     <footer class="footer footer--ml-sidebar-width">
-        <p class="mb-2 mb-sm-0">Copyright &copy; Website mu 2020. All rights reserved</p>
-        <p>Version 1.0.2</p>
+        <p class="mb-2 mb-sm-0">Copyright &copy; In Crust We Rush. All rights reserved</p>
+        <p>Version 2.0.0</p>
     </footer>
 
     <!-- Pertama jQuery, kemudian Bootstrap JS, dan Reza Admin JS -->

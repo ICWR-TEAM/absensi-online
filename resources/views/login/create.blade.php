@@ -72,7 +72,7 @@
                     </form>
                 </div>
             </div>
-            <a href="{{ route('login') }}" class="btn btn--link mb-3">Sudah punya akun? Login!</a>
+            <a href="{{ route('/') }}" class="btn btn--link mb-3">Sudah punya akun? Login!</a>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

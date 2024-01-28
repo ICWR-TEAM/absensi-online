@@ -7,7 +7,7 @@
     <div class="row">
         <header class="main__header col-12 mb-2">
             <div class="main__title">
-                <h4>Main</h4>
+                <h4>Tambah user</h4>
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
                     <li class="breadcrumb-item active">Tambah user</li>

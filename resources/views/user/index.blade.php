@@ -4,8 +4,8 @@
 <!-- <div class="d-flex align-items-center mt-5 mb-5" style="height: 100vh;"> -->
 <div class="p-5">
     <div class="container">
-        <div class="card border-0 shadow">
-            <div class="card-body">
+        <div class="card border-0">
+            <div class="card-body shadow">
                 <div class="card-title">
                     <h2 class="text-center">Hallo, {{$value->name}} 👋</h2>
                     <div class="d-flex align-items-center justify-content-center">

@@ -20,10 +20,10 @@ use App\Http\Controllers\UserController;
 use App\RiwayatAbsensi;
 use Illuminate\Support\Facades\DB;
 
-Route::get('/', [HomeController::class, "index"])->name("home");
-Route::get("login", [LoginController::class, "index"])->name("login");
+Route::get('/', [LoginController::class, "index"])->name("/");
+// Route::get("login", [LoginController::class, "index"])->name("login");
 Route::get("login/create/", [LoginController::class, "create_account"])->name("login.create");
-Route::post("login", [LoginController::class, "action_login"])->name("action_login");
+Route::post("/", [LoginController::class, "action_login"])->name("/");
 Route::post("login/create", [LoginController::class, "create_user"])->name("login.create");
 Route::get("reload-captcha", [LoginController::class, "reloadCaptcha"])->name("reload-captcha");
 

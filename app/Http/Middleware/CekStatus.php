@@ -17,10 +17,10 @@ class CekStatus
     public function handle($request, Closure $next, $role)
     {
         if (!Auth::check()) {
-            return redirect("login");
+            return redirect("/");
         }elseif (Auth::user()->role == $role) {
             return $next($request);
         }
-        return redirect("login")->with("error", "Kamu tidak mempunyai akses login!");
+        return redirect("/")->with("error", "Kamu tidak mempunyai akses login!");
     }
 }
