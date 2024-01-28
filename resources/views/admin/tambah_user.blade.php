@@ -27,7 +27,8 @@
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Tambah user</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Menambahkan user melalui file excel</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Menambahkan user melalui file excel [<a href="{{ asset('file/contoh.xlsx') }}">Contoh file</a>]</h6>
+                <small class="text-muted">*Catatan: data tidak boleh duplikat dengan tabel yang sudah ada & data excel minimal 8 baris.</small>
                 <hr>
                 <form method="post" action="{{route('import.excel.user')}}" enctype="multipart/form-data" class="mb-3">
                     @csrf
@@ -121,7 +122,7 @@
     @if(session("gagal_import_duplicate"))
     Swal.fire({
       title: "Gagal!",
-      text: "Data duplicate, silahkan cek ulang!",
+      text: "Data duplicate / data kurang, silahkan cek ulang!",
       icon: "error"
     });
     @endif
