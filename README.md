@@ -1,4 +1,4 @@
-# absensi-online
+# Absensi Online V2.0
 
 ![1](https://github.com/ICWR-TEAM/absensi-online/assets/45759837/69821cba-46f8-4a86-b7a8-c715f9eba506)
 
