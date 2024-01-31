@@ -2,7 +2,7 @@
 
 ![1](https://github.com/ICWR-TEAM/absensi-online/assets/45759837/69821cba-46f8-4a86-b7a8-c715f9eba506)
 
-Aplikasi Absensi Online dibangun menggunakan framework PHP Laravel, memberikan solusi modern untuk manajemen absensi karyawan secara efisien. Aplikasi ini dirancang dengan antarmuka pengguna yang bersih dan responsif untuk memastikan pengalaman pengguna yang optimal.
+Aplikasi Absensi Online dibangun menggunakan framework PHP Laravel, memberikan solusi modern untuk manajemen absensi karyawan atau siswa secara efisien. Aplikasi ini dirancang dengan antarmuka pengguna yang bersih dan responsif untuk memastikan pengalaman pengguna yang optimal.
 
 ### Apa yang update?
     1. Penambahan webcam
